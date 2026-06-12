@@ -17,9 +17,11 @@ Then it helps you stop needing it. Two trainers build the underlying skill so yo
 - **Live slope reader** — slope % and direction straight from the phone's accelerometer, with zero-calibrate and lock.
 - **Physics-based reads** — instead of a flat lookup chart, it rolls a virtual ball for every putt, so long putts correctly break more than short ones and downhill breaks more than uphill.
 - **Trajectory view** — draws the ball path, apex, aim point, fall line, and hole.
-- **Break Trainer** — commit your own read before the answer reveals; scored and tracked over time. Toggle between inches/cm and AimPoint-style fingers.
+- **Break Trainer** — commit your own read before the answer reveals; scored and tracked over time. Toggle between inches/cm and finger reads.
 - **Feel Trainer** — hides the sensor number while you read the slope through your feet, then reveals what it measured. The highest-leverage green-reading skill.
 - **Finger calibration** — converts every read into fingers held at arm's length, using real geometry tuned to your hand.
+- **Putt logging & miss-pattern diagnosis** — log real results (made / high / low / short / long); the app computes make rates by distance and detects your personal bias, like the classic low-side under-read.
+- **The Feel & Fingers method** — a built-in guide to reading greens with your feet and fingers: feel it, number it, finger it, verify it.
 - **Course notebook** — save courses with their speed and grain, load with one tap.
 - **Grain, metric units, green-speed finder, pace-off helper** — and it all works offline.
 
@@ -44,7 +46,16 @@ Runs fully offline after the first load. All stats and saved courses stay on you
 
 ## Tech
 
-Single self-contained HTML file — vanilla JavaScript, no build step, no backend, no tracking. The Device Motion API needs HTTPS, which is why it's served via GitHub Pages.
+Installable PWA — vanilla JavaScript, no framework, no build step, no backend, no tracking. A service worker precaches the app shell so it runs fully offline and self-updates on new releases. The Device Motion API needs HTTPS, which is why it's served via GitHub Pages.
+
+```
+index.html            app shell
+styles.css            theme & layout
+app.js                physics engine, trainers, logging
+sw.js                 offline cache + updates
+manifest.webmanifest  install metadata
+greeniq-logo/         brand assets & PWA icons
+```
 
 ## Note
 

@@ -1,0 +1,17 @@
+{
+  "name": "GreenIQ — Green Reading & Putting Trainer",
+  "short_name": "GreenIQ",
+  "description": "Read any putt, then train your eye to do it without the app. Slope sensor, physics-based reads, and the Feel & Fingers method.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0E2A22",
+  "background_color": "#0A201A",
+  "icons": [
+    { "src": "greeniq-logo/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "greeniq-logo/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "greeniq-logo/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "greeniq-logo/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
