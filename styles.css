@@ -57,3 +57,8 @@ body {
 
 /* GreenIQ chips carry a little top margin where they follow inputs. */
 .chips { margin-top: 9px; }
+
+/* Fields sharing a row in a 2-col grid must start at the same height. The
+ * design system's `.field { margin-top: 11px }` (reset only on :first-child)
+ * otherwise drops the second column 11px, misaligning the steppers. */
+.grid2 > .field { margin-top: 0; }

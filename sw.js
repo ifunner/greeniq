@@ -1,5 +1,5 @@
 /* GreenIQ service worker — bump VERSION on every release to push updates */
-const VERSION = "giq-v5.1.0";
+const VERSION = "giq-v5.1.2";
 const CORE = [
   "./",
   "index.html",
