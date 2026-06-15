@@ -164,6 +164,28 @@ Monospace applies to: `.mono`, stepper inputs, `.readout-slope`, `.bigval`, chip
 | `.sheet h3` | 16px | default | — | — | `--ink` |
 | `footer` | 11px | 400 | — | — | `--sage` |
 
+### Hero numerals (per app — intentional)
+
+Hero sizes are **not unified** across the suite. Each app sizes its primary readout for its instrument:
+
+| App | Element | Size | Role |
+|---|---|---|---|
+| StrokesIQ | `.hero .pot` | 64px | Scoring potential |
+| PracticeIQ | `.metric.hero .val` | 46px | Dashboard hero metric |
+| GreenIQ | `.readout-slope` | 40px (+ 18px unit) | Live slope % |
+| GreenIQ | `.bigval` | 34px (+ 15px unit) | Aim & pace output |
+
+Non-hero stat tiles align at **30px** (StrokesIQ `.stat .v`, PracticeIQ `.metric .val`).
+
+### Status badge vs category tag
+
+| Class | App | Use |
+|---|---|---|
+| `.pill` | GreenIQ, StrokesIQ | Yellow status badge in the header (e.g. HCP) |
+| `.tag` | PracticeIQ | Semantic tinted category labels (full / speed / putt / score) |
+
+Do not use `.pill` for PracticeIQ category labels — that name is reserved for the yellow badge pattern.
+
 ### Wordmark
 
 ```
@@ -560,23 +582,23 @@ App-specific structures are intentional product choices, not spec exceptions. Al
 
 ### GreenIQ (reference)
 
-Putt-read instrument: slope reader, direction clock, schematic, feel trainer. Header scrolls with content.
+Putt-read instrument: slope reader, direction clock, schematic, feel trainer. Header scrolls with content. Header utility: ghost units toggle (`ft / in`).
 
 ### StrokesIQ
 
-Strokes-gained tracker: scoring-potential hero, leak diagnosis, diverging SG bars, miss heat grid, per-hole entry. 3-tab bar (Home · Rounds · More).
+Strokes-gained tracker: scoring-potential hero, leak diagnosis, diverging SG bars, miss heat grid, per-hole entry. 3-tab bar (Home · Rounds · More). Header utility: yellow `.pill` (handicap).
 
 ### PracticeIQ
 
 | Area | PracticeIQ |
 |---|---|
 | Tabs | 5 items (Today · Practice · Rounds · Plan · More) |
-| Header | Sticky, transparent — gradient must show through |
+| Header | Scrolls with content, transparent — gradient must show through; logo only (no header utility) |
 | Data font | System mono (unified with the suite) |
-| Hero metric | `.metric.hero` uses the `.read` card gradient |
+| Hero metric | `.metric.hero` uses the `.read` card gradient; 46px value |
 | Accent rail | `.cue` banner — flag-yellow left border (swing thought) |
-| Category pills | Semantic tinted `.pill` variants (speed / putt / score), token-derived |
-| Primary CTA | `.btn.primary` on save, start, and done actions |
+| Category tags | Semantic tinted `.tag` variants (speed / putt / score), token-derived |
+| Primary CTA | Shared `button.primary` (+ `.block` for full-width) |
 
 ---
 
