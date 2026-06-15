@@ -582,7 +582,7 @@ Strokes-gained tracker: scoring-potential hero, leak diagnosis, diverging SG bar
 
 ## Quick start for new GolfIQ surfaces
 
-1. Link/import the shared layer: `golfiq.css` (vendor a copy via `golfiq-design` sync, or `import '@golfiq/design-system/css'` in a build app).
+1. Link/import the shared layer: `golfiq.css` (vendor a copy via `golfiq-design` sync, or `import '@golfiq/design/css'` in a build app).
 2. Load Space Grotesk (500, 700).
 3. The shared layer already applies tokens, the canonical page background, `.mono`, and all primitives.
 4. Stack content in `.card` sections inside a 520px column.
