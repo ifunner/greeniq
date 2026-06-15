@@ -1,152 +1,59 @@
-:root{
-    --felt:#0E2A22; --felt-deep:#0A201A; --panel:#10322A; --panel-hi:#143a30;
-    --ink:#F2EBDA; --ink-dim:#9DB3A6; --sage:#6E8F7E; --line:#26483D;
-    --flag:#F4D03F; --path:#46C98A; --red:#E06A5C; --uphill:#7FC8FF;
-    --r:16px;
-  }
-  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
-  html,body{margin:0; background:var(--felt-deep); color:var(--ink);
-    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-    -webkit-font-smoothing:antialiased; overscroll-behavior-y:none}
-  body{
-    background:
-      radial-gradient(120% 60% at 50% -10%, #16382d 0%, var(--felt) 42%, var(--felt-deep) 100%);
-    min-height:100dvh; padding:max(14px,env(safe-area-inset-top)) 14px calc(86px + env(safe-area-inset-bottom));
-    max-width:520px; margin:0 auto;
-  }
-  .mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-variant-numeric:tabular-nums}
-  .eyebrow{font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--sage); font-weight:600}
+/* GreenIQ-specific components.
+ * Tokens, page treatment, and shared primitives come from golfiq.css
+ * (the GolfIQ design system, linked before this file). Only GreenIQ's
+ * putt-reading instrument styles live here. */
 
-  /* header */
-  header{display:flex; align-items:center; justify-content:space-between; margin-bottom:14px}
-  .brand{display:flex; align-items:baseline; gap:9px}
-  .brand h1{font-size:21px; margin:0; letter-spacing:-.01em; font-weight:800}
-  .brand h1 b{color:var(--flag); font-weight:800}
-  .pill{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--felt-deep);
-    background:var(--flag); padding:3px 8px; border-radius:99px; font-weight:800}
+/* GreenIQ lays the 520px column on <body> directly (no .app wrapper). */
+body {
+  min-height: 100dvh;
+  padding: max(14px, env(safe-area-inset-top)) 14px calc(86px + env(safe-area-inset-bottom));
+  max-width: 520px;
+  margin: 0 auto;
+}
 
-  .card{background:linear-gradient(180deg,var(--panel) 0%, var(--panel) 100%);
-    border:1px solid var(--line); border-radius:var(--r); padding:15px; margin-bottom:13px;
-    box-shadow:0 1px 0 rgba(255,255,255,.025) inset, 0 8px 24px -18px #000}
-  .card h2{margin:0 0 12px; font-size:13px; letter-spacing:.04em; display:flex; align-items:center; gap:8px}
-  .card h2 .num{font-family:ui-monospace,monospace; color:var(--flag); font-size:12px; border:1px solid var(--line);
-    border-radius:6px; padding:2px 6px}
+/* brand mark */
+.brandmark { width: 30px; height: 30px; flex: 0 0 30px; }
 
-  /* slope reader */
-  .reader{display:grid; grid-template-columns:128px 1fr; gap:14px; align-items:center}
-  .level{position:relative; width:128px; height:128px}
-  .level svg{display:block}
-  .readout-slope{font-family:ui-monospace,monospace; font-size:40px; font-weight:600; line-height:1; letter-spacing:-.02em}
-  .readout-slope small{font-size:18px; color:var(--ink-dim)}
-  .dir-label{font-size:12px; color:var(--ink-dim); margin-top:4px}
-  .btnrow{display:flex; gap:8px; flex-wrap:wrap; margin-top:11px}
-  button{font:inherit; cursor:pointer; border-radius:11px; border:1px solid var(--line);
-    background:var(--panel-hi); color:var(--ink); padding:9px 12px; font-size:13px; font-weight:600;
-    transition:transform .04s ease, background .15s, border-color .15s}
-  button:active{transform:scale(.96)}
-  button.primary{background:var(--flag); color:#1a1500; border-color:var(--flag)}
-  button.live{background:var(--path); color:#04140c; border-color:var(--path)}
-  button.ghost{background:transparent}
-  .hint{font-size:11.5px; color:var(--ink-dim); line-height:1.5; margin-top:9px}
+/* slope reader */
+.reader { display: grid; grid-template-columns: 128px 1fr; gap: 14px; align-items: center; }
+.level { position: relative; width: 128px; height: 128px; }
+.level svg { display: block; }
+.readout-slope { font-family: var(--mono); font-size: 40px; font-weight: 600; line-height: 1; letter-spacing: -.02em; }
+.readout-slope small { font-size: 18px; color: var(--ink-dim); }
+.dir-label { font-size: 12px; color: var(--ink-dim); margin-top: 4px; }
+.hint { font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; margin-top: 9px; }
 
-  /* inputs */
-  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
-  .grid2 > *{min-width:0}
-  .field label{display:block; font-size:11px; letter-spacing:.04em; color:var(--sage); margin-bottom:6px; text-transform:uppercase; font-weight:600}
-  .field label .u-inline{color:var(--ink-dim); text-transform:none; letter-spacing:0; font-weight:500}
-  .stepper{display:flex; align-items:stretch; border:1px solid var(--line); border-radius:11px; overflow:hidden; background:var(--felt-deep)}
-  .stepper button{border:0; border-radius:0; background:transparent; font-size:19px; flex:0 0 38px; width:38px; padding:0; color:var(--sage)}
-  .stepper input{flex:1 1 0; min-width:0; width:0; border:0; background:transparent; color:var(--ink); text-align:center;
-    font-family:ui-monospace,monospace; font-size:17px; font-weight:600; padding:10px 0}
-  .stepper input:focus{outline:none}
-  .unit{display:none}
-  input[type=range]{width:100%; accent-color:var(--flag); margin:6px 0 0}
+/* clock dial */
+.clockwrap { display: grid; grid-template-columns: 118px 1fr; gap: 14px; align-items: center; }
+.clock { width: 118px; height: 118px; touch-action: none; }
+.clock-help { font-size: 11.5px; color: var(--ink-dim); line-height: 1.5; }
 
-  /* app pages + tab bar */
-  .page{display:none; animation:pgin .18s ease}
-  .page.on{display:block}
-  @keyframes pgin{from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none}}
-  .tabbar{position:fixed; left:0; right:0; bottom:0; z-index:40;
-    display:flex; justify-content:space-around; align-items:stretch;
-    background:rgba(9,26,21,.92); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-    border-top:1px solid var(--line); padding:6px 8px calc(8px + env(safe-area-inset-bottom));
-    max-width:520px; margin:0 auto}
-  .tabbar button{flex:1; background:none; border:0; border-radius:12px; color:var(--ink-dim);
-    display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10.5px; font-weight:700;
-    letter-spacing:.04em; padding:7px 0}
-  .tabbar button svg{width:21px; height:21px; stroke:currentColor; fill:none; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round}
-  .tabbar button.on{color:var(--flag)}
-  @media (prefers-reduced-motion:reduce){.page{animation:none}}
+/* the read */
+.readgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 6px; }
+.bigval { font-family: var(--mono); font-size: 34px; font-weight: 600; line-height: 1.02; letter-spacing: -.02em; }
+.bigval .u { font-size: 15px; color: var(--ink-dim); font-weight: 600; }
+.aimcol .bigval { color: var(--flag); }
+.subline { font-size: 12px; color: var(--ink-dim); margin-top: 4px; min-height: 16px; }
+.callout { font-size: 13px; font-weight: 600; margin-top: 2px; }
+.warn { color: var(--red); }
+.schematic { margin-top: 6px; border-top: 1px solid var(--line); padding-top: 12px; }
+.schematic svg { display: block; width: 100%; height: auto; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 11px; color: var(--ink-dim); margin-top: 8px; }
+.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: middle; }
 
-  /* clock dial */
-  .clockwrap{display:grid; grid-template-columns:118px 1fr; gap:14px; align-items:center}
-  .clock{width:118px; height:118px; touch-action:none}
-  .clock-help{font-size:11.5px; color:var(--ink-dim); line-height:1.5}
-
-  /* the read */
-  .read{background:linear-gradient(180deg,#0c2820,#0a221b); border-color:#2c5446}
-  .readgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:6px}
-  .bigval{font-family:ui-monospace,monospace; font-size:34px; font-weight:600; line-height:1.02; letter-spacing:-.02em}
-  .bigval .u{font-size:15px; color:var(--ink-dim); font-weight:600}
-  .aimcol .bigval{color:var(--flag)}
-  .subline{font-size:12px; color:var(--ink-dim); margin-top:4px; min-height:16px}
-  .callout{font-size:13px; font-weight:600; margin-top:2px}
-  .warn{color:var(--red)}
-  .schematic{margin-top:6px; border-top:1px solid var(--line); padding-top:12px}
-  .schematic svg{display:block; width:100%; height:auto}
-  .legend{display:flex; gap:14px; flex-wrap:wrap; font-size:11px; color:var(--ink-dim); margin-top:8px}
-  .legend i{display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:5px; vertical-align:middle}
-
-  /* accordion */
-  details{border:1px solid var(--line); border-radius:var(--r); background:var(--panel); margin-bottom:13px; overflow:hidden}
-  summary{list-style:none; cursor:pointer; padding:14px 15px; font-size:13px; font-weight:700; display:flex; justify-content:space-between; align-items:center}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+"; color:var(--sage); font-family:monospace; font-size:18px}
-  details[open] summary::after{content:"–"}
-  .acc-body{padding:0 15px 15px; font-size:13px; line-height:1.62; color:var(--ink-dim)}
-  .acc-body b{color:var(--ink)} .acc-body ol{padding-left:20px; margin:8px 0}
-  .acc-body li{margin:6px 0}
-
-  /* stimp finder modal */
-  .modal{position:fixed; inset:0; background:rgba(5,16,12,.74); backdrop-filter:blur(3px);
-    display:none; align-items:center; justify-content:center; padding:18px; z-index:50}
-  .modal.on{display:flex}
-  .sheet{background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:18px; max-width:380px; width:100%}
-  .sheet h3{margin:0 0 4px; font-size:16px}
-  .sheet p{font-size:12.5px; color:var(--ink-dim); line-height:1.55; margin:.5em 0}
-  footer{text-align:center; font-size:11px; color:var(--sage); margin-top:6px; line-height:1.6}
-  .toast{position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px); opacity:0;
-    background:var(--flag); color:#1a1500; padding:10px 16px; border-radius:99px; font-size:13px; font-weight:700;
-    transition:.25s; pointer-events:none; z-index:60}
-  .toast.on{opacity:1; transform:translateX(-50%) translateY(0)}
-  .blurred{filter:blur(12px); transition:filter .2s}
-  .chips{display:flex; gap:7px; flex-wrap:wrap; margin-top:9px}
-  .chip{display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:600; background:var(--felt-deep);
-    border:1px solid var(--line); border-radius:99px; padding:6px 11px; cursor:pointer}
-  .chip b{color:var(--flag); font-family:ui-monospace,monospace; font-weight:600}
-  .chip .x{color:var(--ink-dim); font-size:14px; padding:0 1px}
-  .seg{display:inline-flex; border:1px solid var(--line); border-radius:9px; overflow:hidden}
-  .seg button{border:0; border-radius:0; background:transparent; padding:6px 11px; font-size:12px}
-  .seg button.on{background:var(--flag); color:#1a1500}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-
-/* brand */
-.brand{display:flex; align-items:center; gap:9px}
-.brandmark{width:30px; height:30px; flex:0 0 30px}
-.brand h1{font-family:'Space Grotesk',ui-sans-serif,system-ui,sans-serif; font-size:21px; margin:0; letter-spacing:-0.028em; line-height:1}
-.wm-green{font-weight:500; color:var(--ink)}
-.wm-iq{font-weight:700; color:var(--path)}
-.card h2, summary, .tabbar button{font-family:'Space Grotesk',ui-sans-serif,system-ui,sans-serif}
+/* blur reveal (feel trainer) */
+.blurred { filter: blur(12px); transition: filter .2s; }
 
 /* putt logging */
-.logrow{display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; border-top:1px solid var(--line); padding-top:12px}
-.logrow .lbl{flex:1 0 100%; font-size:11px; letter-spacing:.05em; text-transform:uppercase; color:var(--sage); font-weight:700; margin-bottom:2px}
-.logrow button{flex:1; padding:8px 4px; font-size:12px; min-width:0}
-.logrow button.made{border-color:#2c5446; color:var(--path)}
+.logrow { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; }
+.logrow .lbl { flex: 1 0 100%; font-size: 11px; letter-spacing: .05em; text-transform: uppercase; color: var(--sage); font-weight: 700; margin-bottom: 2px; }
+.logrow button { flex: 1; padding: 8px 4px; font-size: 12px; min-width: 0; }
+.logrow button.made { border-color: #2c5446; color: var(--path); }
 
 /* insights */
-.bar{height:8px; background:var(--felt-deep); border:1px solid var(--line); border-radius:99px; overflow:hidden; margin:4px 0 10px}
-.bar i{display:block; height:100%; background:var(--path)}
-.insight-line{font-size:12.5px; color:var(--ink-dim); display:flex; justify-content:space-between; margin-top:8px}
-.insight-line b{color:var(--ink); font-family:ui-monospace,monospace}
-.verdict{margin-top:12px; padding:10px 12px; border:1px solid var(--line); border-left:3px solid var(--flag); border-radius:8px; font-size:13px; line-height:1.5}
+.insight-line { font-size: 12.5px; color: var(--ink-dim); display: flex; justify-content: space-between; margin-top: 8px; }
+.insight-line b { color: var(--ink); font-family: var(--mono); }
+.verdict { margin-top: 12px; }
+
+/* GreenIQ chips carry a little top margin where they follow inputs. */
+.chips { margin-top: 9px; }
