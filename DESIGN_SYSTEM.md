@@ -2,7 +2,7 @@
 
 The GolfIQ design language is built for golf tools that feel like premium course-side instruments: dark felt greens, warm ivory type, and a single flag-yellow accent for the moments that matter (aim point, cup, primary action). **GreenIQ** is the reference implementation; **StrokesIQ** and **PracticeIQ** follow the same tokens, hierarchy, and component rules documented here.
 
-> **Source of truth.** This document and the shared `golfiq.css` live in the `golfiq-design-system/` package. Each app vendors a synced copy — never hand-edit a vendored `golfiq.css` or a per-repo `DESIGN_SYSTEM.md`. Edit them in `golfiq-design-system/` and run `npm run sync`. See that package's README for the workflow. Where GreenIQ's shipped CSS and this spec ever disagree, **GreenIQ wins** for look-and-feel; this doc is kept in sync to match.
+> **Source of truth.** This document and the shared `golfiq.css` live in the `golfiq-design/` package. Each app vendors a synced copy — never hand-edit a vendored `golfiq.css` or a per-repo `DESIGN_SYSTEM.md`. Edit them in `golfiq-design/` and run `npm run sync`. See that package's README for the workflow. Where GreenIQ's shipped CSS and this spec ever disagree, **GreenIQ wins** for look-and-feel; this doc is kept in sync to match.
 
 ---
 
@@ -545,9 +545,9 @@ line-height: 1.5;
 
 | File | Design responsibility |
 |---|---|
-| `golfiq-design-system/golfiq.css` | **Canonical** tokens, page treatment, shared primitives |
-| `golfiq-design-system/DESIGN_SYSTEM.md` | **Canonical** cross-suite spec (this file) |
-| `golfiq-design-system/sync.mjs` | Propagates `golfiq.css` + this doc into each app |
+| `golfiq-design/golfiq.css` | **Canonical** tokens, page treatment, shared primitives |
+| `golfiq-design/DESIGN_SYSTEM.md` | **Canonical** cross-suite spec (this file) |
+| `golfiq-design/sync.mjs` | Propagates `golfiq.css` + this doc into each app |
 | `greeniq/golfiq.css` · `styles.css` | Vendored shared layer (linked) + GreenIQ-specific components |
 | `strokesiq/src/styles/golfiq.css` · `components.css` | Vendored shared layer (imported) + StrokesIQ components |
 | `practiceiq/golfiq.css` · inline `<style>` | Vendored shared layer (linked) + a small reconciliation override block + PracticeIQ components |
@@ -582,7 +582,7 @@ Strokes-gained tracker: scoring-potential hero, leak diagnosis, diverging SG bar
 
 ## Quick start for new GolfIQ surfaces
 
-1. Link/import the shared layer: `golfiq.css` (vendor a copy via `golfiq-design-system` sync, or `import '@golfiq/design-system/css'` in a build app).
+1. Link/import the shared layer: `golfiq.css` (vendor a copy via `golfiq-design` sync, or `import '@golfiq/design-system/css'` in a build app).
 2. Load Space Grotesk (500, 700).
 3. The shared layer already applies tokens, the canonical page background, `.mono`, and all primitives.
 4. Stack content in `.card` sections inside a 520px column.
