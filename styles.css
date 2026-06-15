@@ -3,16 +3,8 @@
  * (the GolfIQ design system, linked before this file). Only GreenIQ's
  * putt-reading instrument styles live here. */
 
-/* GreenIQ lays the 520px column on <body> directly (no .app wrapper). */
-body {
-  min-height: 100dvh;
-  padding: max(14px, env(safe-area-inset-top)) 14px calc(86px + env(safe-area-inset-bottom));
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-/* brand mark */
-.brandmark { width: 30px; height: 30px; flex: 0 0 30px; }
+/* Column shell comes from the shared .app wrapper in golfiq.css (full-width
+ * body keeps the page gradient edge-to-edge). */
 
 /* slope reader */
 .reader { display: grid; grid-template-columns: 128px 1fr; gap: 14px; align-items: center; }

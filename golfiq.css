@@ -110,9 +110,9 @@ header {
 }
 .brand .mark,
 .brand .brandmark {
-  width: 26px;
-  height: 26px;
-  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
 }
 .brand h1,
 .brand .wm {
